@@ -329,7 +329,7 @@ def render_message_backend(
 ) -> HttpResponse:
     message = Message()
     message.sender = user_profile
-    message.content = content
+    message.content = "lol " + content
     client = RequestNotes.get_notes(request).client
     assert client is not None
     message.sending_client = client

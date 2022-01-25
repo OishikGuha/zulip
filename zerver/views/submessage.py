@@ -53,6 +53,9 @@ def process_submessage(
         except ValidationError as error:
             raise JsonableError(error.message)
 
+    if widget_type == "lol":
+        print(widget_data)
+
     do_add_submessage(
         realm=user_profile.realm,
         sender_id=user_profile.id,

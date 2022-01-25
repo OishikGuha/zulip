@@ -7,7 +7,7 @@ from zerver.models import Message, SubMessage
 
 
 def get_widget_data(content: str) -> Tuple[Optional[str], Optional[str]]:
-    valid_widget_types = ["poll", "todo"]
+    valid_widget_types = ["poll", "todo", "lol"]
     tokens = content.split(" ")
 
     # tokens[0] will always exist
@@ -22,6 +22,7 @@ def get_widget_data(content: str) -> Tuple[Optional[str], Optional[str]]:
 
 
 def get_extra_data_from_widget_type(content: str, widget_type: Optional[str]) -> Any:
+    print("-------------------------------\n" + widget_type)
     if widget_type == "poll":
         # This is used to extract the question from the poll command.
         # The command '/poll question' will pre-set the question in the poll
@@ -40,6 +41,13 @@ def get_extra_data_from_widget_type(content: str, widget_type: Optional[str]) ->
             "question": question,
             "options": options,
         }
+        return extra_data
+    elif widget_type == "lol":
+        extra_data = {
+            "question": "sussy",
+            "options": "sussy",
+        }
+
         return extra_data
     return None
 
@@ -98,6 +106,7 @@ def get_widget_type(*, message_id: int) -> Optional[str]:
         return None
 
     try:
+        print("-=-=-=-=-=-=-\n"+{data["widget_type"]}+"\n-=-=-=-=-=-=-")
         return data["widget_type"]
     except Exception:
         return None

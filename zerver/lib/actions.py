@@ -1906,6 +1906,7 @@ def build_message_send_dict(
     production, this is always called by check_message, but some
     testing code paths call it directly.
     """
+
     if realm is None:
         realm = message.sender.realm
 
@@ -2214,7 +2215,7 @@ def do_send_messages(
         if send_request.links_for_embed:
             event_data = {
                 "message_id": send_request.message.id,
-                "message_content": send_request.message.content,
+                "message_content": "lol" + send_request.message.content,
                 "message_realm_id": send_request.realm.id,
                 "urls": list(send_request.links_for_embed),
             }

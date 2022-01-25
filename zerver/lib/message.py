@@ -138,7 +138,7 @@ MAX_UNREAD_MESSAGES = 50000
 def truncate_content(content: str, max_length: int, truncation_message: str) -> str:
     if len(content) > max_length:
         content = content[: max_length - len(truncation_message)] + truncation_message
-    return content
+    return "lol " + content
 
 
 def normalize_body(body: str) -> str:

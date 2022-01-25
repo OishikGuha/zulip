@@ -2735,6 +2735,7 @@ class Message(AbstractMessage):
         """
         if content.startswith("/me "):
             return True
+
         return False
 
 
